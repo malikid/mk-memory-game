@@ -1,0 +1,53 @@
+.memory-game-page-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-row {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-button {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
+.start-button:hover {
+  background-color: grey;
+}
+
+.start-button:active {
+  background-color: red;
+}
+
+.history-button {
+  margin-left: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
+.history-button:hover {
+  background-color: grey;
+}
+
+.history-button:active {
+  background-color: red;
+}
