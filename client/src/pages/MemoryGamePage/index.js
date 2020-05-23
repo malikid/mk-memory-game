@@ -63,7 +63,7 @@ class MemoryGamePage extends Component {
           <Button disabled={isAskingNumberOfCards} onClick={isPlaying || isDone ? resetTheRound : startPlaying}>
             {isPlaying || isDone ? 'Reset' : 'Start'}
           </Button>
-          <Button>History</Button>
+          <Button disabled={true}>History</Button>
         </ButtonsContainer>
         {isDone && <ResultContainer>
           <ResultText>{resultText}</ResultText>
