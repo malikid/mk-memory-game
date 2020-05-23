@@ -13,11 +13,22 @@ export const Button = styled.div`
   justify-content: center;
   color: white;
 
-  &:hover {
-    background-color: grey;
-  }
+  ${({disabled}) => {
+    if(disabled) {
+      return `
+        background-color: lightgrey;
+        cursor: default;`;
+    }
+    return `
+      cursor: pointer;
 
-  &:active {
-    background-color: red;
+      &:hover {
+        background-color: grey;
+      }
+
+      &:active {
+        background-color: red;
+      }`;
+    }
   }
 `;

@@ -6,13 +6,27 @@ import {Card, CardNumber} from './styles';
 class CardComponent extends Component {
   render() {
     const {
-      side,
-      number,
+      cardObj: {
+        side,
+        number,
+        flip
+      },
       onClickHandler
     } = this.props;
 
+    const isClickable = !!onClickHandler;
+
     return (
-      <Card onClick={onClickHandler}>
+      <Card
+        side={side}
+        isClickable={isClickable}
+        onClick={() => {
+          if (isClickable) {
+            onClickHandler(number);
+            flip();
+          }
+        }}
+      >
         <CardNumber>
           {side === CARD.NUMBER_SIDE ? number : ''}
         </CardNumber>

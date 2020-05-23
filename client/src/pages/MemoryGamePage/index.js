@@ -4,12 +4,18 @@ import map from 'lodash/map';
 
 import {
   PageContainer,
+  Question,
   CardsContainer,
-  ButtonsContainer
+  ButtonsContainer,
+  ResultContainer,
+  ResultText,
+  ResultImage
 } from './styles';
 import {Button} from 'Styles/general';
 
 import Card from 'Components/Card';
+
+import {CARD, MEMORY_GAME_STATUS} from 'Config/enums';
 
 @inject('store')
 @observer
@@ -18,30 +24,50 @@ class MemoryGamePage extends Component {
     const {
       numberOfCards,
       cards,
-      flip,
-      isPlaying
+      cardClickHandler,
+      questionForNumberOfCards,
+      guideToStart,
+      descriptionForRules,
+      isAskingNumberOfCards,
+      isReadyToPlay,
+      isPlaying,
+      isDone,
+      startPlaying,
+      resetTheRound,
+      resultText,
+      resultImageUrl,
     } = this.props.store.memoryGamePage;
 
-    // if(!numberOfCards) {
-    //   return (<div>How many cards would you like to play?</div>);
-    // }
-
-    const cardElements = map(cards, card => (
+    const cardElements = map(cards, (card, index) => (
       <Card
-        {...card}
-        onClickHandler={flip}
+        key={index}
+        cardObj={card}
+        onClickHandler={
+          isAskingNumberOfCards || (isPlaying && card.side === CARD.BLANK_SIDE) ? cardClickHandler : undefined
+        }
       />
     ));
     
     return (
       <PageContainer>
+        <Question>
+          {isAskingNumberOfCards ? questionForNumberOfCards : (
+            isReadyToPlay ? guideToStart : descriptionForRules
+          )}
+        </Question>
         <CardsContainer>
           {cardElements}
         </CardsContainer>
         <ButtonsContainer>
-          {!isPlaying && <Button>Start playing</Button>}
-          {!isPlaying && <Button>History</Button>}
+          <Button disabled={isAskingNumberOfCards} onClick={isPlaying || isDone ? resetTheRound : startPlaying}>
+            {isPlaying || isDone ? 'Reset' : 'Start Playing'}
+          </Button>
+          <Button>History</Button>
         </ButtonsContainer>
+        {isDone && <ResultContainer>
+          <ResultText>{resultText}</ResultText>
+          <ResultImage src={resultImageUrl} />
+        </ResultContainer>}
       </PageContainer>
     );
   }
