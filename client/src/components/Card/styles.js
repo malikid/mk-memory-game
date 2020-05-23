@@ -7,7 +7,26 @@ export const Card = styled.div`
   margin: 20px;
   width: 150px;
   height: 210px;
-  ${({side}) => {
+  ${({side, isTranslucent}) => {
+    if (isTranslucent) {
+      return `position: relative;
+        &::after {
+          width: 100%;
+          height: 100%;
+          content: "";
+          background: url('images/playing-card-back.jpg');
+          background-size: contain;
+          opacity: 0.5;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          position: absolute;
+          z-index: -1;
+        }
+      `;
+    }
+
     switch(side) {
       case CARD.NUMBER_SIDE:
         return `

@@ -42,6 +42,7 @@ class MemoryGamePage extends Component {
       <Card
         key={index}
         cardObj={card}
+        isTranslucent={isDone && card.side === CARD.BLANK_SIDE}
         onClickHandler={
           isAskingNumberOfCards || (isPlaying && card.side === CARD.BLANK_SIDE) ? cardClickHandler : undefined
         }

@@ -11,7 +11,8 @@ class CardComponent extends Component {
         number,
         flip
       },
-      onClickHandler
+      onClickHandler,
+      isTranslucent,
     } = this.props;
 
     const isClickable = !!onClickHandler;
@@ -20,6 +21,7 @@ class CardComponent extends Component {
       <Card
         side={side}
         isClickable={isClickable}
+        isTranslucent={isTranslucent}
         onClick={() => {
           if (isClickable) {
             onClickHandler(number);
@@ -28,7 +30,7 @@ class CardComponent extends Component {
         }}
       >
         <CardNumber>
-          {side === CARD.NUMBER_SIDE ? number : ''}
+          {isTranslucent || side === CARD.NUMBER_SIDE ? number : ''}
         </CardNumber>
       </Card>
     );
