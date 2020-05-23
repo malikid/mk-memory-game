@@ -2,7 +2,12 @@ import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import map from 'lodash/map';
 
-import './index.css';
+import {
+  PageContainer,
+  CardsContainer,
+  ButtonsContainer
+} from './styles';
+import {Button} from 'Styles/general';
 
 import Card from 'Components/Card';
 
@@ -29,15 +34,15 @@ class MemoryGamePage extends Component {
     ));
     
     return (
-      <div className='memory-game-page-container'>
-        <div className='cards-container'>
+      <PageContainer>
+        <CardsContainer>
           {cardElements}
-        </div>
-        <div className='button-row'>
-          {!isPlaying && <div className='start-button'>Start playing</div>}
-          {!isPlaying && <div className='history-button'>History</div>}
-        </div>
-      </div>
+        </CardsContainer>
+        <ButtonsContainer>
+          {!isPlaying && <Button>Start playing</Button>}
+          {!isPlaying && <Button>History</Button>}
+        </ButtonsContainer>
+      </PageContainer>
     );
   }
 }

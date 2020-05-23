@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {CARD} from 'Config/enums';
 
-import './index.css';
+import {Card, CardNumber} from './styles';
 
-class Card extends Component {
+class CardComponent extends Component {
   render() {
     const {
       side,
@@ -12,13 +12,13 @@ class Card extends Component {
     } = this.props;
 
     return (
-      <div className='card' onClick={onClickHandler}>
-        <span className='card-number'>
+      <Card onClick={onClickHandler}>
+        <CardNumber>
           {side === CARD.NUMBER_SIDE ? number : ''}
-        </span>
-      </div>
+        </CardNumber>
+      </Card>
     );
   }
 }
 
-export default Card;
+export default CardComponent;

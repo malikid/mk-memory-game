@@ -1,4 +1,7 @@
-.card {
+import React from 'react';
+import styled from 'styled-components';
+
+export const Card = styled.div`
   margin: 20px;
   width: 150px;
   height: 250px;
@@ -7,8 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
+`;
 
-.card-number {
+export const CardNumber = styled.div`
   font-size: xxx-large;
-}
+`;
