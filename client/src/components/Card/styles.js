@@ -47,9 +47,7 @@ export const Card = styled.div`
     cursor: pointer;
 
     &:hover {
-      position: relative;
-      top: -10px;
-      left: -10px;
+      transform: translate(-10px, -10px);
     }
 
     &:active {
