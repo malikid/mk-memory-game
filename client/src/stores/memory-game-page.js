@@ -78,7 +78,7 @@ class MemoryGame {
       this.cards.push(card);
       this.cardNumbersInOrder.push(card.number);
     }
-    this.cardNumbersInOrder.sort();
+    this.cardNumbersInOrder.sort(function(a, b) {return a - b;});
   }
 
   @action
