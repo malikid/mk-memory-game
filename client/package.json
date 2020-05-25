@@ -2,8 +2,12 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "author": "malikid.chang@gmail.com",
+  "author": "MingHo Chang <malikid.chang@gmail.com>",
   "license": "ISC",
+  "engines": {
+    "node": "=12.13.0",
+    "yarn": "=1.0.0"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
