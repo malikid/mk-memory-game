@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "start": "npm run start-client",
-    "start-client": "cd client && yarn start",
-    "start-server": "cd server && npm run server"
+    "start-client": "cd client && yarn && yarn start",
+    "start-server": "cd server && npm i && npm run server"
   },
   "author": "malikid.chang@gmail.com",
   "license": "ISC",
