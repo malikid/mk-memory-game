@@ -23,7 +23,7 @@ npm start-dev
 ### In production mode
 
 ```
-npm run build
+npm run heroku-postbuild // Necessary since it does the build
 npm start
 ```
 
