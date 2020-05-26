@@ -19,15 +19,17 @@
     "react-dom": "^16.13.1",
     "react-is": "16.13.1",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.1.0",
-    "customize-cra": "^0.9.1",
-    "react-app-rewired": "^2.1.6"
+    "serve": "^11.3.1",
+    "styled-components": "^5.1.0"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "serve -s build",
+    "start-dev": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,5 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "customize-cra": "^0.9.1",
+    "react-app-rewired": "^2.1.6"
   }
 }
