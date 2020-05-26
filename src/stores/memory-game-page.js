@@ -4,6 +4,8 @@ import {forEach, random} from 'lodash';
 import {CARD, MEMORY_GAME_STATUS} from 'Config/enums';
 import CardObject from 'Objects/CardObject';
 
+import ReactGA from 'react-ga';
+
 class MemoryGame {
   questionForNumberOfCards = 'How many cards would you like to play?';
   guideToStart = 'Please click start once you memorize everything.'
@@ -57,6 +59,15 @@ class MemoryGame {
   @action
   setStatus = (status) => {
     this.status = status;
+    ReactGA.event({
+      category: 'Status',
+      action: 'Update',
+      value: this.isAskingNumberOfCards ? 'IS ASKING NUMBER OF CARDS' : (
+        this.isReadyToPlay ? 'IS READY TO PLAY' : (
+          this.isPlaying ? 'IS PLAYING' : this.resultText
+        )
+      )
+    });
   }
 
   @action
@@ -124,8 +135,8 @@ class MemoryGame {
 
   @action
   challengeDone = (result) => {
-    this.setStatus(MEMORY_GAME_STATUS.IS_DONE);
     this.setResultText(this.resultTexts[result]);
+    this.setStatus(MEMORY_GAME_STATUS.IS_DONE);
     const resultImagePath = `images/${this.resultImagesFileNames[result][random(5)]}.png`;
     this.setResultImageUrl(resultImagePath);
   }
