@@ -7,11 +7,17 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'mobx-react';
 import store from 'Stores';
 
-import {GA_CONTAINER_ID} from 'Config';
+import {GA_CONTAINER_ID, HOTJAR_ID, HOTJAR_VERSION} from 'Config';
+
 import ReactGA from 'react-ga';
 if (GA_CONTAINER_ID) {
   ReactGA.initialize(GA_CONTAINER_ID);
   ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
+import {hotjar} from 'react-hotjar';
+if (HOTJAR_ID && HOTJAR_VERSION) {
+  hotjar.initialize(HOTJAR_ID, HOTJAR_VERSION);
 }
 
 ReactDOM.render(
