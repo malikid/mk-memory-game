@@ -39,6 +39,7 @@ export const ResultContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  pointer-events: none;
 `;
 
 export const ResultText = styled.div`
